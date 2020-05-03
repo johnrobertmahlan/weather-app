@@ -6,6 +6,8 @@
 
 /*----- app's state (variables) -----*/
 
+let weatherData, fTemp, cTemp;
+
 
 
 
@@ -14,11 +16,9 @@
 
 const $name = $('#name');
 
-//const $weather1 = $('#weather.main');
+const $weather = $('#weather');
 
-//const $weather2 = $('#weather.description');
-
-
+const $temperature = $('#temperature');
 
 
 /*----- event listeners -----*/
@@ -33,10 +33,11 @@ function handleGetData(event) {
     $.ajax({
         url: 'http://api.openweathermap.org/data/2.5/weather?q=Charlottesville&appid=3130b9f6f3c126f9bc6a4a2c72b3f56c'
     }).then(function(data) {
-        console.log(data);
         $name.html(data.name);
-        //$weather1.html(data.weather.main);
-        //$weather2.html(data.weather.description);   
+        $weather.html(data.weather[0].main);
+        fTemp = Math.round(data.main.temp * 9/5 -459.67);
+        cTemp = Math.round(data.main.temp  - 273.15);
+        $temperature.html(fTemp + ' F (' + cTemp + ' C)');
     }, function(error) {
         console.log(error);
     });
