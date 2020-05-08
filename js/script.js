@@ -6,7 +6,7 @@
 
 /*----- app's state (variables) -----*/
 
-let weatherData, userInput, fTemp, fTempMin, fTempMax, cTemp, cTempMin, cTempMax;
+let userInput, weatherData, fTemp, fTempMin, fTempMax, cTemp, cTempMin, cTempMax;
 
 
 
@@ -16,19 +16,17 @@ let weatherData, userInput, fTemp, fTempMin, fTempMax, cTemp, cTempMin, cTempMax
 
 const $name = $('#name');
 
-const $weather = $('#weather');
-
 const $temperature = $('#temperature');
 
-const $lowTemp = $('#low-temp');
+//const $tempRange = $('#temp-range');
 
-const $highTemp = $('#high-temp');
+const $input = $('input[type="text"]');
 
-const $input = $('input[type="text"]')
+const $search = $('input[type="submit"]');
 
 
 /*----- event listeners -----*/
-$('form').on('submit', handleGetData);
+$search.on('click', handleGetData);
 
 
 
@@ -51,18 +49,15 @@ function handleGetData(event) {
 }
 
 function render() {
-    $name.html(weatherData.name);
-    $weather.html(weatherData.weather[0].main);
-
     // Calculating these temperatures like this because the data structure for the API calls for Fahrenheit and Celsius temperatures was far more complicated, since it gave you a list of multiple cities with the same name every time
 
     fTemp = Math.round(weatherData.main.temp * 9/5 - 459.67);
-    fTempMin = Math.round(weatherData.main.temp_min * 9/5 - 459.67);
-    fTempMax = Math.round(weatherData.main.temp_max * 9/5 - 459.67);
+    //fTempMin = Math.round(weatherData.main.temp_min * 9/5 - 459.67);
+    //fTempMax = Math.round(weatherData.main.temp_max * 9/5 - 459.67);
     cTemp = Math.round(weatherData.main.temp  - 273.15);
-    cTempMin = Math.round(weatherData.main.temp_min - 273.15);
-    cTempMax = Math.round(weatherData.main.temp_max - 273.15);
-    $temperature.html(fTemp + ' F (' + cTemp + ' C)');
-    $lowTemp.html(fTempMin + ' F (' + cTempMin + ' C)');
-    $highTemp.html(fTempMax + 'F (' + cTempMax + ' C)');
+    //cTempMin = Math.round(weatherData.main.temp_min - 273.15);
+    //cTempMax = Math.round(weatherData.main.temp_max - 273.15);
+    $name.html(`Current conditions: <br> <span id="conditions">${weatherData.weather[0].main}</span>`);
+    $temperature.html(`Current temperature: <br> <span id="temp">${fTemp} F (${cTemp} C)</span>`);
+    //$tempRange.html(`Today's low: ${fTempMin} F (${cTempMin} C) <br> Today's high: ${fTempMax} F (${cTempMax} C)`);
 };

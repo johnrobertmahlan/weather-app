@@ -3,38 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How's the Weather Out There?</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script defer src="./js/script.js"></script>
 </head>
 <body>
+    <header>
+         <h1>A Simple Weather App</h1>
+         <p>Type in your city below and find out what the weather is like. Simple!</p>
+         <p id="prompt">Enter Your City: <input type="text" placeholder="City"> <input id="search" type="submit" value="Find Weather"></p>
+    </header>
+
     <main>
-        
-        <h3>Select Your City:</h3>
-        <dl>
-            <dt>Name of Your City: </dt>
-            <dd id="name"></dd>
+        <div id="forecast">
+            <h3 id="name"></h3>
             <br><br>
-            <dt>Current Weather: </dt>
-            <dd id="weather"></dd>
-            <br><br>
-            <dt>Temperature: </dt>
-            <dd id="temperature"></dd>
-            <br>
-            <dt>Today's Low: </dt>
-            <dd id="low-temp"></dd>
-            <dt>Today's High: </dt>
-            <dd id="high-temp"></dd>
-        </dl>
-
-        <form>
-            <input type="text" placeholder="City">
-            <input type="submit" value="Find Weather">
-        </form>
-
+            <h3 id="temperature"></h3>
+        </div>
     </main>
-    
-    
 </body>
 </html>
