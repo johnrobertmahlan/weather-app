@@ -6,7 +6,7 @@
 
 /*----- app's state (variables) -----*/
 
-let weatherData, userInput, fTemp, cTemp;
+let weatherData, userInput, fTemp, fTempMin, fTempMax, cTemp, cTempMin, cTempMax;
 
 
 
@@ -19,6 +19,10 @@ const $name = $('#name');
 const $weather = $('#weather');
 
 const $temperature = $('#temperature');
+
+const $lowTemp = $('#low-temp');
+
+const $highTemp = $('#high-temp');
 
 const $input = $('input[type="text"]')
 
@@ -49,7 +53,16 @@ function handleGetData(event) {
 function render() {
     $name.html(weatherData.name);
     $weather.html(weatherData.weather[0].main);
-    fTemp = Math.round(weatherData.main.temp * 9/5 -459.67);
+
+    // Calculating these temperatures like this because the data structure for the API calls for Fahrenheit and Celsius temperatures was far more complicated, since it gave you a list of multiple cities with the same name every time
+
+    fTemp = Math.round(weatherData.main.temp * 9/5 - 459.67);
+    fTempMin = Math.round(weatherData.main.temp_min * 9/5 - 459.67);
+    fTempMax = Math.round(weatherData.main.temp_max * 9/5 - 459.67);
     cTemp = Math.round(weatherData.main.temp  - 273.15);
+    cTempMin = Math.round(weatherData.main.temp_min - 273.15);
+    cTempMax = Math.round(weatherData.main.temp_max - 273.15);
     $temperature.html(fTemp + ' F (' + cTemp + ' C)');
+    $lowTemp.html(fTempMin + ' F (' + cTempMin + ' C)');
+    $highTemp.html(fTempMax + 'F (' + cTempMax + ' C)');
 };
