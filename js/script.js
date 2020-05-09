@@ -10,8 +10,6 @@ let userInput, weatherData, fTemp, fTempMin, fTempMax, cTemp, cTempMin, cTempMax
 
 
 
-
-
 /*----- cached element references -----*/
 
 const $name = $('#name');

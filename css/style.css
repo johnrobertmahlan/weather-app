@@ -8,6 +8,12 @@ body {
 
 header {
     text-align: center;
+    font-family: 'Cairo', sans-serif;
+}
+
+input {
+    border-radius: 5px;
+    font-family: 'Cairo', sans-serif;
 }
 
 main {
@@ -16,8 +22,14 @@ main {
     margin-top: 50px;
 }
 
+footer {
+    text-align: center;
+    color: white;
+}
+
 #forecast {
     text-align: center;
+    font-family: 'Cairo', sans-serif;
     height: 300px;
     width: 500px;
     border: 10px solid black;
@@ -31,4 +43,8 @@ main {
 
 #conditions {
     font-size: 45px;
+}
+
+a:visited {
+    color: white;
 }
