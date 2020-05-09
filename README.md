@@ -16,6 +16,7 @@ The initial plan for the app was a little more ambitious than what I ended up wi
 * HTML
 * CSS
 * JavaScript (including jQuery)
+* Google Fonts
 
 The site is powered by [Open Weather Map's API](https://openweathermap.org/api).
 
